@@ -280,20 +280,190 @@ def distinctWindowNumbers(A, B):
 # distinctWindowNumbers(A, B)
 
 
-def kthSymbol(A, B, firstValue):
-    result = ""
-    for i in range(0, len(firstValue)):
-        if firstValue[i] == "0":
-            result.join("01")
-        if firstValue[i] == "1":
-            result.join("10")
-    print(result)
 
 
 
-A = 1
-B = 1
+
+def kthSymbol(A, B):
+    if A == 0 or B == 0:
+        return 0
+
+    parent = kthSymbol(A-1, B>>1 if B%2 == 0 else 1 + B>>1)
+    return parent if B % 2 == 1 else 1 - parent
+
+
+class Solution:
+    # @param A : integer
+    # @param B : integer
+    # @return an integer
+    def solve(self, A, B):
+        if A == 1:
+            return 0
+        parent = self.solve(A-1, (B+1)//2)
+        if B % 2 == 1:
+            return parent
+        else:
+            return 1-parent
+
+# A = 1
+# B = 1
 
 # A = 2
 # B = 2
-kthSymbol(A, B, "0")
+# kthSymbol(A, B, "0")
+
+'''
+left shift operator
+5 -> 0000 0101
+  -> 0000 1010
+
+after << 1
+
+
+right shift operator
+10 -> 0000 1010
+   -> 0000 0101
+
+'''
+
+
+'''
+first we will need to have a hash that will have a value of all alphabets to compare means a -> 1, b -> 2, for this we will use ord()
+Now we need to find the subsequence, where the order matters but contigous does not
+We also know that the minumum subsequence of an array will be of minimum of 2 and it result will alway be 2
+Here we will need to first check if the string length given in the input is equal 2 1 or 2 if it is then give the result as it is
+
+approach
+
+1. We will need to have a first check of string which has length 2 and 3
+2. need 2 variable of result and also minumumValueCheck
+3. We will need 2 for loop for this and do the addition of this 
+'''
+
+def littlePonyandSubSequence(A):
+    if len(A) == 1:
+        return 0
+    
+    if len(A) == 2:
+        return A
+    
+    result = ''
+    minValueCheck = float('inf')
+
+    for i in range(0, len(A)):
+        for j in range(i + 1, len(A)):
+            orderValueOfAlphabets = ord(A[i]) + ord(A[j])
+            if orderValueOfAlphabets < minValueCheck:
+                minValueCheck = orderValueOfAlphabets
+                print(i, j)
+                result = A[i] + A[j]
+    return result
+    return 0
+
+# A = "abcdsfhjagj"
+# A = "ksdjgha"
+# littlePonyandSubSequence(A)
+
+
+'''
+the thing is to find all possible subset in from the give input and pass this as an array result
+Now a subset should be in ascending order so I can even finf the subarray and add an empty array also
+we cannot use subaaray as subarrays are contingous and sub sets can be contigous also not contigous
+
+'''
+
+def toFindSubSets(A):
+    '''
+    I will need to see how a subarray is made 
+    [1, 2, 3]
+    for this the subarrays are [1], [1, 2], [1]
+    '''
+
+    result = []
+    result.append([])
+
+
+
+
+
+# A = [1]
+# A = [1, 2, 3]
+# toFindSubSets(A)
+
+
+
+
+def oddEvenSubsequence(A):
+    result = []
+    nextOddOrEvenToFind = ''
+    i = 0
+    j = 0
+    for i in range(0, len(A)):
+        subSequence = []
+        subSequence.append(A[i])
+        if A[i] % 2 == 0:
+            nextOddOrEvenToFind = 'odd'
+        else:
+            nextOddOrEvenToFind = 'even'        
+        for j in range(i + 1, len(A)):
+            if nextOddOrEvenToFind == 'even':
+                if A[j] % 2 == 0:
+                    subSequence.append(A[j])
+                    nextOddOrEvenToFind = 'odd'
+                    continue
+            if nextOddOrEvenToFind == 'odd':
+                if A[j] % 2 == 1:
+                    subSequence.append(A[j])
+                    nextOddOrEvenToFind = 'even'
+                    continue
+        result.append(subSequence)
+    
+    i = 0
+    maxCountResult = float('-inf')
+    for i in range(0, len(result)):
+        maxCountResult = max(maxCountResult, len(result[i]))
+    return maxCountResult        
+
+        
+
+
+
+# A = [1, 2, 2, 5, 6]
+# A = [2, 2, 2, 2, 2, 2]
+# oddEvenSubsequence(A)
+
+
+
+
+def specialSubSequenceAG(A):
+    '''
+    approach using prefix sum
+    1. when using prefux sum, let's do this for an example
+        ABCGAG -> We will be doing a right prefix [0, 0, 0, 0, 0, 0]
+        I encountered a G so the array will be [0, 0, 0, 0, 0, 1]
+        I encounteres a G so the array will be [0, 0, 0, 2, 0, 1]
+        I can also do this array in this way [2, 2, 2, 2, 1, 1]
+        this is the prefix summ array
+        now, I need to find in the array if i come across A and at that index what is the number and add the number to the result array
+
+    '''
+    result = 0
+    rightPrefixArr = [0 for i in range(0, len(A))]
+    rightPrefixArr[len(rightPrefixArr) -1] = 1 if A[len(A) - 1] == "G" else 0
+
+    for i in range(len(A) - 2, -1, -1):
+        if A[i] == "G":
+            rightPrefixArr[i] = rightPrefixArr[i + 1] + 1
+        else:
+            rightPrefixArr[i] = rightPrefixArr[i + 1]
+
+    i = 0
+    for i in range(0, len(A)):
+        if A[i] == "A":
+            result = rightPrefixArr[i] + result
+    return result
+
+
+# A = "ABCGAG"
+A = "GAB"
+specialSubSequenceAG(A)
