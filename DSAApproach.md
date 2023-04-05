@@ -1,3 +1,12 @@
+### Python Goctha's 
+
+1. If I want to do reverse for loop which need values  `from 0 to 10` then I need to use 
+    `for i in range(10, -1, -1):` 
+    https://stackoverflow.com/questions/3476732/how-to-loop-backwards-in-python
+2. For Queue I can use `deque` and the code to import is `from collections import deque`
+
+
+
 ### If an 1d Array sum is given
     What All Topics are covered in this
         1. Normal Arrays
@@ -14,6 +23,24 @@
         7. hash methods
         8. Propogation technique (Prefix sum)
 
+
+### 2D Martix Approach
+    - In a 2d matrix or A[n][m] 
+        Top left -> A[0][0] 
+        Top Right -> A[0][m - 1]
+        Bottom Right -> A[n - 1][m - 1]
+        Bottom Left -> A[n - 1][0]
+    
+    - In a square matrix the diagonal left to right there is an observation 
+        i == j
+
+    - IMP Observation, there can be cases when you are given a square matrix then you dont need to for a 2 for loop
+    eg : A[N][M] is a square matrix where N == M then for i in range(m) is enough
+
+    - In a square matrix for diagonal right to left there is an observation
+        Row is increased and columns is decreased
+    
+    Observation: Matrix question may not be solved in one loop condition, will need step 1 and step 2
 
 ### Bit Manupulation 
 

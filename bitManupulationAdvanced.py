@@ -169,24 +169,100 @@ def smallestXor(A, B):
     5. Return the X
 
     '''
-    bit = 32
+    if B == 0:
+        return A
     x = A
-    for i in range(0, bit):
-        if ((A >> i) & 1) == 1 and B > 1:
-            x = x ^ (1)
-            B -= 1
-    
-    i = 0
-    for i in range(0, len(x)):
+    for i in range(31, -1, -1):
+        if ((x >> i) & 1) == 1:
+            B -=1
+            if B < 0:
+                x = x & (~(1 << i)) 
 
-
-        
+    print(x)    
     return 0
 
 
-A = 3
-B = 3
+# A = 3
+# B = 3
 
-A = 15
-B = 2
-smallestXor(A, B)
+# A = 15
+# B = 2
+# smallestXor(A, B)
+
+
+def maximimSatisfaction(A):
+    '''
+    Approach:
+    1. I will have an array with 32 0's in it
+    2. I will have a for which will go from 31 to 0 in reverse 
+        1. In that for loop another loop that will check the array and if we have a set bit, 
+            - if a set bit is there then increase the count by 1 for every array values
+    3. lastly it will check which has 4 value as count return it
+    '''
+    result = ''
+
+    countArr = [0] * 32
+    
+    for i in range(31, -1, -1):
+        count = 0
+        for j in range(0, len(A)):
+            if ((A[j] >> i) & 1) == 1:
+                count = count + 1
+
+        countArr[i] = count 
+
+    i = 0
+
+    for i in range(len(A) -1, -1, -1):
+        if A[i] != 4:
+            result = "".join([result, "0"])
+        else:
+            result = "".join([result, "1"])
+    
+    result = "".join(reversed(result))
+    print(int(result))
+    
+    return 0
+
+A = [10, 20, 15, 4, 14]
+# A = [2, 2, 7, 15]
+maximimSatisfaction(A)
+
+
+
+'''
+001111 -> 15
+001110 -> 14
+010100 -> 20
+000100 -> 4
+001010 -> 10
+
+
+00010 -> 2
+00010 -> 2
+00111 -> 7
+01111 -> 15
+
+00001
+00010
+00100
+01000
+10000
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
