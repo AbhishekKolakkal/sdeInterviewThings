@@ -42,6 +42,17 @@
     
     Observation: Matrix question may not be solved in one loop condition, will need step 1 and step 2
 
+    - For Upper Triangular Matrix and to print only upper triangular see this example
+        [
+            [1 2 3 4] 
+            [5 6 7 8] 
+            [9 10 11 12] 
+            [13 14 15 16]
+        ]
+
+        for i in range(0, len(A))
+            for j in range(i + 1, len(A))
+
 ### Bit Manupulation 
 
     https://github.com/kushagra414/Dynamic-Programming/blob/master/Bit%20Manipulation%20Cheat%20Sheet.md
