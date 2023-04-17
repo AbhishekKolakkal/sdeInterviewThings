@@ -5,6 +5,9 @@
     https://stackoverflow.com/questions/3476732/how-to-loop-backwards-in-python
 2. For Queue I can use `deque` and the code to import is `from collections import deque`
 
+3. Concatenating a string in python
+
+
 
 
 ### If an 1d Array sum is given
@@ -149,4 +152,15 @@
         a ^= b;
 
     15. for checking ith bit is set (value>>position)&1==1:
-    
+
+
+### Recursion
+
+1. 3 Golden Steps of Recursion
+    1. Assumption: What do you want your function to do
+    2. Main Logic: How to solve the problem using smaller sub problem
+    3. Base Condition: When do you want to stop
+
+2. For time complexity there is something called as substitution method which is used
+
+3. Very Important to see if you are returning everything that is needed or else you may end up getting None
