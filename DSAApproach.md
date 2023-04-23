@@ -1,3 +1,12 @@
+###
+
+1. r - l + 1
+
+2. 
+
+### Good Sites for Undestanding things
+https://visualgo.net/ -> Can see how algorithm works
+
 ### Python Goctha's 
 
 1. If I want to do reverse for loop which need values  `from 0 to 10` then I need to use 
@@ -164,3 +173,34 @@
 2. For time complexity there is something called as substitution method which is used
 
 3. Very Important to see if you are returning everything that is needed or else you may end up getting None
+
+### Sorting
+
+1. There is something called as inplace sorting which means it doesn't use extra space for sorting
+
+
+
+
+2. Types of Sorting Algorithm
+    1. Selection Sort
+        The definition of selection sort is that if you find a thing to be swapped' let's say a number then you swap it with the index.
+        The sort is not stable
+        This is an inplace sorting
+        Time Complexity O(n^2)
+        Space Complexity 0(1)
+    2. Bubble Sort
+        Sorting happens only on the adjacent elements in the array 
+        after every sort depending on the condition you will get 1st, 2nd, 3rd ... max or min on the right position
+        Time Complexity O(n^2)
+        This sort is stable, duplicate element is not interchanging
+
+    3. Merge Sort
+    4. Quick Sort
+    5. Insertion Sort
+    6.
+    7. To learn all these sort and to visualise this there is a site 
+        https://visualgo.net/en/sorting?slide=6-5
+
+3. There is also something called as comparators which is also something that is used 
+
+4. 

@@ -7,4 +7,5 @@
     https://www.interviewbit.com/problems/reorder-list/discussion/
 4. Zigzag Level Order Traversal
     https://www.interviewbit.com/problems/zigzag-level-order-traversal-bt/
-5. 
+5. Inversion Count
+    This is explained in Sorting lecture just after merge Sort
